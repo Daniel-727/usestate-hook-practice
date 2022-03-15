@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function App(props) {
+function App() { //got rid of props, because we're not actually using any props
   let time = new Date().toLocaleTimeString();
 //console.log(time);
 
@@ -13,12 +13,13 @@ function App(props) {
     getTime(currentTime = new Date().toLocaleTimeString()); //getTime is the function that updates the state, so we want to update currentTime to be the time right now, so we give it a new Date object
   }
 
+  setInterval(showTime, 1000);//using the setInterval method to call the showTime method every 1000 milliseconds (1 second) so the currentTime will update and be re-rendered every second
+
   return (
     <div className="container">
       <h1>{currentTime}</h1>
-      <button onClick={showTime}>Get Time</button>
     </div>
-  ); //props.ShowTime is a function that displays the current time, we have the onClick handler, so that when the button is clicked the showTime() function will execute and update the currentTime, and since in the h1 we are displaying the currentTime, the currentTime will be updated and rerendered to display the correct time.
+  ); //we got rid of the button since we no longer need it to execute the showTime function
 }
 
 export default App;
